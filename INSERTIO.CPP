@@ -2,45 +2,24 @@
 #include <conio.h>
 
 void InsertionSort(int A[], int size)
-{       int upos,lpos,pos,uvalue,lvalue;
+{       int upos,lpos,pos,uvalue,flag;//int lvalue;
 	for(int i = 0;i<size;i++)
-	{
+	{       flag = 0;
 		for(int j = 0;j<size-1;)
-		{       pos=0;
+		{       pos = 0;
 			if(A[j]>A[j+1])
-			{
+			{       flag = 1;
 				uvalue = A[j];
 				pos = lpos = j;
 				pos++;
-				/*Is it possible that pos is being incremented but A[pos] is not changing?
-				  The values for random() also do not change in loop.
-				  Is it that the condition is being evaluated at every iteration, but the
-				  values of Array[index] do not change with change in index?*/
-				/*while(uvalue>A[pos])//LoopHole??
+				while(pos<=size-2)
 				{
-					if(pos==size-1)
-					{	break;
-					}
-					pos++;
-				}*/
-				while(1)
-				{
-					if(pos==size-1)
-					{
-						if(uvalue>A[pos])
-							pos++;
-						break;
-					}
-					else if(uvalue>A[pos+1])
-					{
+					if(uvalue>A[pos+1])
 						pos++;
-					}
 					else
-					{
 						break;
-					}
 				}
-				lvalue = A[pos];
+				//lvalue = A[pos];
 				upos = pos;
 				pos = lpos;
 				while(pos<upos)
@@ -49,13 +28,17 @@ void InsertionSort(int A[], int size)
 					pos++;
 				}
 				A[upos] = uvalue;
-				cout<<"[+]Step "<<i<<"th "<<j<<".\n";
+				cout<<"[+]Step "<<i+1<<"th "<<j+1<<".\t";
 				for(int k=0;k<size;k++)
 					cout<<"  "<<A[k];
 				cout<<"\n";
 			}
 			else
-			j++;
+			{
+				j++;
+				if(j==size-1&&flag==0)
+					return;
+			}
 		}
 	}
 }
