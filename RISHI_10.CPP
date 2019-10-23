@@ -2,7 +2,7 @@
 #include <conio.h>
 
 void BubbleSort(int A[],int size)
-{
+{       int flag = 0, step = 0;
 	for(int i = 0;i<size-1;i++)
 	{
 		for(int j = 0;j<size-i-1;j++)
@@ -12,13 +12,19 @@ void BubbleSort(int A[],int size)
 				A[j] = A[j] + A[j+1];
 				A[j+1] = A[j] - A[j+1];
 				A[j] = A[j] - A[j+1];
+				flag = 1;
+				step++;
 			}
-			cout<<"A[] after step "<<i<<" - "<<j<<">> ";
-			for(int k = 0;k<i;k++)
+			if(flag==1)
 			{
-				cout<<A[k]<<" ";
+				cout<<" A[] after step: "<<step<<" >> ";
+				for(int k = 0;k<size;k++)
+				{
+					cout<<A[k]<<" ";
+				}
+				flag = 0;
+				cout<<'\n';
 			}
-			cout<<'\n';
 		}
 	}
 
@@ -44,7 +50,7 @@ void main()
 	}
 	cout<<'\n';
 	BubbleSort(A,i);
-	cout<<"Sorted Array A[] >> ";
+	cout<<" Sorted Array A[]  >> ";
 	for(int k = 0;k<i;k++)
 	{
 		cout<<A[k]<<" ";
