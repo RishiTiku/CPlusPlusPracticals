@@ -1,31 +1,29 @@
 #include <iostream.h>
 #include <conio.h>
 
-void BubbleSort(int A[],int size)
-{       int flag = 0, step = 0;
+void SelectionSort(int A[],int size)
+{       int pos = 0, step = 0,small=0,temp;
 	for(int i = 0;i<size-1;i++)
 	{
-		for(int j = 0;j<size-i-1;j++)
+		small = A[i];
+		for(int j = i;j<size;j++)
 		{
-			if(A[j]>A[j+1])
+			if(A[j]<small)
 			{
-				A[j] = A[j] + A[j+1];
-				A[j+1] = A[j] - A[j+1];
-				A[j] = A[j] - A[j+1];
-				flag = 1;
-				step++;
-			}
-			if(flag==1)
-			{
-				cout<<" A[] after step: "<<step<<" >> ";
-				for(int k = 0;k<size;k++)
-				{
-					cout<<A[k]<<" ";
-				}
-				flag = 0;
-				cout<<'\n';
+				small = A[j];
+				pos = j;
 			}
 		}
+		step++;
+		temp = A[i];
+		A[i] = A[pos];
+		A[pos] = temp;
+		cout<<" A[] after step: "<<step<<" >> ";
+		for(int k = 0;k<size;k++)
+		{
+			cout<<A[k]<<" ";
+		}
+		cout<<'\n';
 	}
 
 }
@@ -49,7 +47,7 @@ void main()
 		cout<<A[j]<<" ";
 	}
 	cout<<'\n';
-	BubbleSort(A,i);
+	SelectionSort(A,i);
 	cout<<" Sorted Array A[]  >> ";
 	for(int k = 0;k<i;k++)
 	{

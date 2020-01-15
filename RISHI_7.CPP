@@ -41,6 +41,6 @@ void main()
 	if(result==-1)
 		cout<<"Search Item not found.\n";
 	else
-		cout<<"Search Item found at "<<result+1<<".\n";
+		cout<<"Search Item found at element "<<result+1<<".\n";
 	getch();
 }

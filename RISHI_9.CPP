@@ -14,7 +14,7 @@ void BubbleSort(int A[],int size)
 				A[j] = A[j] - A[j+1];
 			}
 			cout<<"A[] after step "<<i<<" - "<<j<<">> ";
-			for(int k = 0;k<i;k++)
+			for(int k = 0;k<size;k++)
 			{
 				cout<<A[k]<<" ";
 			}
